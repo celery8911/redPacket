@@ -16,8 +16,8 @@ dataSources:
       apiVersion: 0.0.9
       language: wasm/assemblyscript
       entities:
-        - PacketClaimed
-        - PacketCreated
+        - Packet
+        - Claim
       abis:
         - name: RedPacket
           file: ./abis/RedPacket.json

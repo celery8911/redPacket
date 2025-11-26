@@ -1,21 +1,21 @@
-type PacketClaimed @entity(immutable: true) {
+type Packet @entity(immutable: false) {
   id: Bytes!
-  internal_id: Bytes! # bytes32
-  claimer: Bytes! # address
-  amount: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  creator: Bytes! # address
+  totalAmount: BigInt!
+  remainingAmount: BigInt!
+  count: BigInt!
+  remainingCount: BigInt!
+  packetType: Int! # 0 for Equal, 1 for Random
+  timestamp: BigInt!
+  txHash: Bytes!
+  claims: [Claim!]! @derivedFrom(field: "packet")
 }
 
-type PacketCreated @entity(immutable: true) {
+type Claim @entity(immutable: true) {
   id: Bytes!
-  internal_id: Bytes! # bytes32
-  creator: Bytes! # address
-  totalAmount: BigInt! # uint256
-  count: BigInt! # uint256
-  packetType: Int! # uint8
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  packet: Packet!
+  claimer: Bytes! # address
+  amount: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
 }
