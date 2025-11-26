@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "RedPacket": {
+      "address": "0xc2F536F5746c812EA681F6b60fBB2EA0cf42E8fD",
+      "startBlock": 0
+    }
+  }
+}

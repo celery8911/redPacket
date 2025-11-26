@@ -1,0 +1,29 @@
+specVersion: 1.3.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: RedPacket
+    network: sepolia
+    source:
+      address: "0xc2F536F5746c812EA681F6b60fBB2EA0cf42E8fD"
+      abi: RedPacket
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - PacketClaimed
+        - PacketCreated
+      abis:
+        - name: RedPacket
+          file: ./abis/RedPacket.json
+      eventHandlers:
+        - event: PacketClaimed(indexed bytes32,indexed address,uint256)
+          handler: handlePacketClaimed
+        - event: PacketCreated(indexed bytes32,indexed address,uint256,uint256,uint8)
+          handler: handlePacketCreated
+      file: ./src/red-packet.ts

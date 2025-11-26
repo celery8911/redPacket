@@ -1,0 +1,21 @@
+type PacketClaimed @entity(immutable: true) {
+  id: Bytes!
+  internal_id: Bytes! # bytes32
+  claimer: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PacketCreated @entity(immutable: true) {
+  id: Bytes!
+  internal_id: Bytes! # bytes32
+  creator: Bytes! # address
+  totalAmount: BigInt! # uint256
+  count: BigInt! # uint256
+  packetType: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
