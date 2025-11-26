@@ -21,6 +21,7 @@ out/
 broadcast/
 artifacts/
 typechain/
+lib/
 
 # Next.js
 .next/
