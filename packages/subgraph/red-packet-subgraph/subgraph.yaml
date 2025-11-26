@@ -10,7 +10,7 @@ dataSources:
     source:
       address: "0xc2F536F5746c812EA681F6b60fBB2EA0cf42E8fD"
       abi: RedPacket
-      startBlock: 0
+      startBlock: 9711635
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.9
