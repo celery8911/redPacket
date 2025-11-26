@@ -8,14 +8,25 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 import { config } from '../wagmi';
 
+import { createClient, Provider, cacheExchange, fetchExchange } from 'urql';
+
 const client = new QueryClient();
+
+const urqlClient = createClient({
+  url: 'https://api.studio.thegraph.com/query/1716172/red-packet-subgraph/version/latest',
+  requestPolicy: 'cache-and-network',
+  exchanges: [cacheExchange, fetchExchange],
+  preferGetMethod: false,
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowKitProvider>
-          <Component {...pageProps} />
+          <Provider value={urqlClient}>
+            <Component {...pageProps} />
+          </Provider>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
