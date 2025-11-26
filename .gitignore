@@ -1,0 +1,28 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Foundry / Hardhat
+cache/
+out/
+broadcast/
+artifacts/
+typechain/
+
+# Next.js
+.next/
+dist/
+build/
