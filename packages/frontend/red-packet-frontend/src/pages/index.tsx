@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { CreatePacket } from '../components/CreatePacket';
 import { PacketList } from '../components/PacketList';
+import { MyClaims } from '../components/MyClaims';
 import { useAccount } from 'wagmi';
 
 const Home: NextPage = () => {
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Red Packet App</title>
+        <title>Red Packet DApp - 抢红包</title>
         <meta
           content="Decentralized Red Packet App"
           name="description"
@@ -21,32 +22,42 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <div className={styles.header}>
+          <h1 className={styles.headerTitle}>
+            🧧 去中心化红包
+          </h1>
           <ConnectButton />
         </div>
 
-        <h1 className={styles.title} style={{ marginBottom: '2rem' }}>
-          Red Packet DApp
-        </h1>
-
         {isConnected ? (
-          <div style={{ width: '100%', maxWidth: '800px' }}>
-            <CreatePacket />
-            <PacketList />
+          <div className={styles.contentGrid}>
+            <div className={styles.stickySidebar}>
+              <CreatePacket />
+              <MyClaims />
+            </div>
+            <div>
+              <PacketList />
+            </div>
           </div>
         ) : (
-          <p>Please connect your wallet to use the app.</p>
+          <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🧧</div>
+            <h2 style={{ color: '#333', marginBottom: '1rem' }}>欢迎来到红包 DApp</h2>
+            <p style={{ color: '#666', marginBottom: '2rem' }}>连接钱包，开始发红包、抢红包！</p>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <ConnectButton />
+            </div>
+          </div>
         )}
       </main>
 
       <footer className={styles.footer}>
-        <a href="https://rainbow.me" rel="noopener noreferrer" target="_blank">
-          Made with ❤️ by your frens at 🌈
+        <a href="https://github.com/celery8911/redPacket" rel="noopener noreferrer" target="_blank">
+          Built with ❤️ on Sepolia
         </a>
       </footer>
     </div>
   );
 };
-
 
 export default Home;
